@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Пропуски</string>
+    <string name="login_page_login">Логин</string>
+    <string name="login_page_password">Пароль</string>
+    <string name="login_page_signin">Войти</string>
+    <string name="pass_reason">Причина пропуска</string>
+    <string name="pass_start_date">Выбрать дату начала</string>
+    <string name="pass_end_date">Выбрать дату конца</string>
+    <string name="date_not_selected">Даты: не выбраны</string>
+    <string name="attach_docs">Прикрепить документ</string>
+    <string name="file_not_selected">Файл не выбран</string>
+    <string name="send_request">Отправить заявку</string>
+</resources>
