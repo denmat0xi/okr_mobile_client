@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -74,6 +75,8 @@ class CreatePassActivity : AppCompatActivity() {
         }
     }
 
+    private val passViewModel: PassViewModel by viewModels()
+
     private fun submitPassRequest() {
         val reason = etReason.text.toString()
         if (reason.isEmpty() || startDate == null || endDate == null) {
@@ -81,8 +84,28 @@ class CreatePassActivity : AppCompatActivity() {
             return
         }
 
-        // TODO: Реализовать отправку через ViewModel с Retrofit
-        Toast.makeText(this, "Заявка отправлена!", Toast.LENGTH_SHORT).show()
+        if (fileUri != null) {
+            passViewModel.uploadFile(this, fileUri!!) { success, fileUrl ->
+                if (success) {
+                    createPassRequest(reason, startDate!!, endDate!!, fileUrl)
+                } else {
+                    Toast.makeText(this, "Ошибка загрузки файла", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            createPassRequest(reason, startDate!!, endDate!!, null)
+        }
+    }
+
+    private fun createPassRequest(reason: String, startDate: String, endDate: String, fileUrl: String?) {
+        passViewModel.createPass(reason, startDate, endDate, fileUrl) { success ->
+            if (success) {
+                Toast.makeText(this, "Заявка отправлена!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Ошибка отправки", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     companion object {

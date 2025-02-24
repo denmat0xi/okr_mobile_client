@@ -10,4 +10,7 @@
     <string name="attach_docs">Прикрепить документ</string>
     <string name="file_not_selected">Файл не выбран</string>
     <string name="send_request">Отправить заявку</string>
+    <string name="item_pass_reason">Причина пропуска</string>
+    <string name="pass_Status">Статус</string>
+    <string name="item_dates">Дата начала - дата окончания</string>
 </resources>

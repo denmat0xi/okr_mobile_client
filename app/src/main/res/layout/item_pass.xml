@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/tvReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/item_pass_reason"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pass_Status" />
+
+    <TextView
+        android:id="@+id/tvDates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/item_dates" />
+</LinearLayout>
