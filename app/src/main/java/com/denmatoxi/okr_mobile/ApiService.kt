@@ -1,5 +1,12 @@
 package com.denmatoxi.okr_mobile
 
+import com.denmatoxi.okr_mobile.DataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.DataClasses.FileUploadResponse
+import com.denmatoxi.okr_mobile.DataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.DataClasses.Pass
+import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
+import com.denmatoxi.okr_mobile.DataClasses.PassRequest
+import com.denmatoxi.okr_mobile.DataClasses.PassResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -16,7 +23,7 @@ interface ApiService {
     fun login(@Body request: LoginRequest): Call<AuthResponse>
 
     @GET("passes/{id}")
-    fun getPass(@Path("id") passId: String): Call<PassResponse>
+    fun getPass(@Path("id") passId: Int): Call<Pass>
 
     @Multipart
     @POST("passes/upload")

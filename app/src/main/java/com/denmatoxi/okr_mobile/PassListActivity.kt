@@ -3,14 +3,18 @@ package com.denmatoxi.okr_mobile
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.denmatoxi.okr_mobile.DataClasses.Pass
+import com.denmatoxi.okr_mobile.ViewModels.PassListViewModel
 
 class PassListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var passAdapter: PassAdapter
-    private val passes = mutableListOf<Pass>()
+    private lateinit var passListViewModel: PassListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,21 +23,18 @@ class PassListActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rvPasses)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        passAdapter = PassAdapter(passes) { pass ->
+        passAdapter = PassAdapter(emptyList()) { pass ->
             openPassDetails(pass)
         }
-
         recyclerView.adapter = passAdapter
 
-        loadPasses()
-    }
+        passListViewModel = ViewModelProvider(this)[PassListViewModel::class.java]
 
-    private fun loadPasses() {
-        // TODO реализовать логику загрузки пропусков
-        // пример
-        passes.add(Pass(1, "Болезнь", "2025-02-01", "2025-02-03", "На проверке", null))
-        passes.add(Pass(2, "Семинар", "2025-02-10", "2025-02-12", "Одобрено", null))
-        passAdapter.notifyDataSetChanged()
+        passListViewModel.passes.observe(this, Observer { passes ->
+            passAdapter.updateData(passes)
+        })
+
+        passListViewModel.loadPasses()
     }
 
     private fun openPassDetails(pass: Pass) {
@@ -42,3 +43,4 @@ class PassListActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
+

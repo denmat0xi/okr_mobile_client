@@ -1,10 +1,17 @@
-package com.denmatoxi.okr_mobile
+package com.denmatoxi.okr_mobile.ViewModels
 
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.denmatoxi.okr_mobile.DataClasses.FileUploadResponse
+import com.denmatoxi.okr_mobile.FileUtils
+import com.denmatoxi.okr_mobile.DataClasses.Pass
+import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
+import com.denmatoxi.okr_mobile.DataClasses.PassRequest
+import com.denmatoxi.okr_mobile.DataClasses.PassResponse
+import com.denmatoxi.okr_mobile.RetrofitClient
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -71,6 +78,7 @@ class PassViewModel : ViewModel() {
             override fun onFailure(call: Call<PassListResponse>, t: Throwable) {
                 _passes.value = emptyList()
             }
+
         })
     }
 }

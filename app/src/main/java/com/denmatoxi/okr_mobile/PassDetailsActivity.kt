@@ -1,9 +1,16 @@
 package com.denmatoxi.okr_mobile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.denmatoxi.okr_mobile.DataClasses.Pass
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class PassDetailsActivity : AppCompatActivity() {
 
@@ -27,13 +34,32 @@ class PassDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadPassDetails(passId: Int) {
-        // TODO реализовать логику загрузки подробностей пропуска
-        tvReason.text = "Причина пропуска: Болезнь"
-        tvStatus.text = "Статус: На проверке"
-        tvDates.text = "Дата начала: 2025-02-01\nДата окончания: 2025-02-03"
+        RetrofitClient.instance.getPass(passId).enqueue(object : Callback<Pass> {
+            @SuppressLint("SetTextI18n")
+            override fun onResponse(call: Call<Pass>, response: Response<Pass>) {
+                if (response.isSuccessful) {
+                    val pass = response.body()
+                    pass?.let {
+                        tvReason.text = "Причина пропуска: ${it.reason}"
+                        tvStatus.text = "Статус: ${it.status}"
+                        tvDates.text = "Дата начала: ${it.startDate}\nДата окончания: ${it.endDate}"
 
-        btnDownloadFile.setOnClickListener {
-            // TODO реализовать логику загрузки файла при наличии
-        }
+                        if (!it.fileUrl.isNullOrEmpty()) {
+                            btnDownloadFile.visibility = View.VISIBLE
+                            btnDownloadFile.setOnClickListener {
+                                downloadFile(it.fileUrl!!)
+                            }
+                        } else {
+                            btnDownloadFile.visibility = View.GONE
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<Pass>, t: Throwable) {
+                Toast.makeText(this@PassDetailsActivity, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
 }

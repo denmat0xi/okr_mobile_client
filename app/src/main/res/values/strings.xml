@@ -13,4 +13,13 @@
     <string name="item_pass_reason">Причина пропуска</string>
     <string name="pass_Status">Статус</string>
     <string name="item_dates">Дата начала - дата окончания</string>
+    <string name="details_reason">Причина:</string>
+    <string name="details_start_date">Дата начала:</string>
+    <string name="details_end_date">Дата окончания:</string>
+    <string name="details_status">Статус:</string>
+    <string name="details_add_file">Прикрепить файл</string>
+    <string name="details_send">Отправить</string>
+    <string name="details">Причина:</string>
+    <string name="details_document">Прикрепленный документ:</string>
+    <string name="details_download_document">Открыть документ</string>
 </resources>

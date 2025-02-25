@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.denmatoxi.okr_mobile.DataClasses.Pass
 
 class PassAdapter(
-    private val passes: List<Pass>,
+    private var passes: List<Pass>,
     private val onItemClick: (Pass) -> Unit
 ) : RecyclerView.Adapter<PassAdapter.PassViewHolder>() {
 
@@ -23,6 +24,11 @@ class PassAdapter(
     }
 
     override fun getItemCount() = passes.size
+
+    fun updateData(newPasses: List<Pass>) {
+        passes = newPasses
+        notifyDataSetChanged()
+    }
 
     inner class PassViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvReason: TextView = itemView.findViewById(R.id.tvReason)
@@ -40,3 +46,4 @@ class PassAdapter(
         }
     }
 }
+
