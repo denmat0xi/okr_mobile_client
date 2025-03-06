@@ -7,5 +7,5 @@ data class Pass(
     val startDate: String,
     val endDate: String,
     val status: String,
-    val fileUrl: String?
+    val fileUrl: String
 )

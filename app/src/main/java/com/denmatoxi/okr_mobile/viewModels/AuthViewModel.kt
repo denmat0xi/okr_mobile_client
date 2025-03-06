@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class AuthViewModel : ViewModel() {
     fun login(username: String, password: String, onResult: (Boolean, String?) -> Unit) {
-        val call = RetrofitClient.instance.login(LoginRequest(username, password))
+        val call = RetrofitClient.instance.getPass(LoginRequest(username, password))
         call.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (response.isSuccessful) {

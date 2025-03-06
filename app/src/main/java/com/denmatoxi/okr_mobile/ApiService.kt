@@ -1,16 +1,10 @@
 package com.denmatoxi.okr_mobile
 
-import com.denmatoxi.okr_mobile.DataClasses.AuthResponse
-import com.denmatoxi.okr_mobile.DataClasses.FileUploadResponse
-import com.denmatoxi.okr_mobile.DataClasses.LoginRequest
-import com.denmatoxi.okr_mobile.DataClasses.Pass
-import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
-import com.denmatoxi.okr_mobile.DataClasses.PassRequest
-import com.denmatoxi.okr_mobile.DataClasses.PassResponse
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.dataClasses.Pass
 import retrofit2.Call
-import retrofit2.http.Body
+import retrofit2.Callback
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -25,23 +19,23 @@ interface ApiService {
     fun register()
 
     @POST("/login")
-    fun getPass()
+    fun getPass(loginRequest: LoginRequest): Call<AuthResponse>
 
     @POST("/logout")
     fun uploadFile()
 
-    @GET("/profile")
-    fun createPass()
+    /*@GET("/profile")
+    fun createPass()*/
 
     @PUT("/profile")
-    fun getPasses()
+    fun getProfile()
 
     //Application
     @GET("/application")
-    fun name1()
+    fun getPasses() : Call<List<Pass>>
 
     @POST("/application")
-    fun name2()
+    fun createPass(pass: Pass) : Call<Pass>
 
     @PUT("/application/{id}")
     fun name3()
