@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.denmatoxi.okr_mobile.ViewModels.PassViewModel
+import com.denmatoxi.okr_mobile.viewModels.PassViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 

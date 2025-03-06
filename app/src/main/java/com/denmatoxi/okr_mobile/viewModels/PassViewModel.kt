@@ -1,16 +1,16 @@
-package com.denmatoxi.okr_mobile.ViewModels
+package com.denmatoxi.okr_mobile.viewModels
 
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.denmatoxi.okr_mobile.DataClasses.FileUploadResponse
+import com.denmatoxi.okr_mobile.dataClasses.FileUploadResponse
 import com.denmatoxi.okr_mobile.FileUtils
-import com.denmatoxi.okr_mobile.DataClasses.Pass
-import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
-import com.denmatoxi.okr_mobile.DataClasses.PassRequest
-import com.denmatoxi.okr_mobile.DataClasses.PassResponse
+import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.PassListResponse
+import com.denmatoxi.okr_mobile.dataClasses.PassRequest
+import com.denmatoxi.okr_mobile.dataClasses.PassResponse
 import com.denmatoxi.okr_mobile.RetrofitClient
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

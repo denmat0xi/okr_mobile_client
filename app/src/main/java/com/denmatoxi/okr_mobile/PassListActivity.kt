@@ -1,4 +1,4 @@
-package com.denmatoxi.okr_mobile
+/*package com.denmatoxi.okr_mobile
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.denmatoxi.okr_mobile.DataClasses.Pass
-import com.denmatoxi.okr_mobile.ViewModels.PassListViewModel
+import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.viewModels.PassListViewModel
 
 class PassListActivity : AppCompatActivity() {
 
@@ -42,5 +42,5 @@ class PassListActivity : AppCompatActivity() {
         intent.putExtra("passId", pass.id)
         startActivity(intent)
     }
-}
+}*/
 

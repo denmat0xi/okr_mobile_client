@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.denmatoxi.okr_mobile.DataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.Pass
 
 class PassAdapter(
     private var passes: List<Pass>,

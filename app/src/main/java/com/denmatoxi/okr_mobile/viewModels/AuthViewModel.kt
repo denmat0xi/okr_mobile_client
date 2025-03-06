@@ -1,8 +1,8 @@
-package com.denmatoxi.okr_mobile.ViewModels
+package com.denmatoxi.okr_mobile.viewModels
 
 import androidx.lifecycle.ViewModel
-import com.denmatoxi.okr_mobile.DataClasses.AuthResponse
-import com.denmatoxi.okr_mobile.DataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
 import com.denmatoxi.okr_mobile.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback

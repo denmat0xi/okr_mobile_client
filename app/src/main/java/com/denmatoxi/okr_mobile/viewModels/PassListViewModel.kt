@@ -1,10 +1,10 @@
-package com.denmatoxi.okr_mobile.ViewModels
+package com.denmatoxi.okr_mobile.viewModels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.denmatoxi.okr_mobile.DataClasses.Pass
-import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
+import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.PassListResponse
 import com.denmatoxi.okr_mobile.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback

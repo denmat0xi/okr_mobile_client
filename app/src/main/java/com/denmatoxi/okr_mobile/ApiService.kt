@@ -1,12 +1,12 @@
 package com.denmatoxi.okr_mobile
 
-import com.denmatoxi.okr_mobile.DataClasses.AuthResponse
-import com.denmatoxi.okr_mobile.DataClasses.FileUploadResponse
-import com.denmatoxi.okr_mobile.DataClasses.LoginRequest
-import com.denmatoxi.okr_mobile.DataClasses.Pass
-import com.denmatoxi.okr_mobile.DataClasses.PassListResponse
-import com.denmatoxi.okr_mobile.DataClasses.PassRequest
-import com.denmatoxi.okr_mobile.DataClasses.PassResponse
+import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.dataClasses.FileUploadResponse
+import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.PassListResponse
+import com.denmatoxi.okr_mobile.dataClasses.PassRequest
+import com.denmatoxi.okr_mobile.dataClasses.PassResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
