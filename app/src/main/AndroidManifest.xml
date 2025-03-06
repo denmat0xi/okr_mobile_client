@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".LoginActivity"
             />
+        <activity android:name=".TempActivity"
+            />
         <activity android:name=".CreatePassActivity" />
     </application>
 

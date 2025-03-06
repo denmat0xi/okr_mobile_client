@@ -2,6 +2,7 @@ package com.denmatoxi.okr_mobile.viewModels
 
 import android.content.Context
 import android.net.Uri
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -44,6 +45,7 @@ class PassViewModel : ViewModel() {
         fileUrl: String,
         onResult: (Boolean) -> Unit
     ) {
+        /*
         val passRequest = Pass(id, userId, reason, startDate, endDate, status, fileUrl)
         RetrofitClient.instance.createPass(passRequest).enqueue(object : Callback<Pass> {
             override fun onResponse(call: Call<PassResponse>, response: Response<PassResponse>) {
@@ -58,10 +60,9 @@ class PassViewModel : ViewModel() {
                 onResult(false)
             }
         })
-
-    })
-
+        */
     }
+
 
     // Метод для загрузки файла
     fun uploadFile(context: Context, fileUri: Uri, onResult: (Boolean, String?) -> Unit) {
@@ -70,7 +71,7 @@ class PassViewModel : ViewModel() {
         val requestFile = RequestBody.create("application/pdf".toMediaTypeOrNull(), file)
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
         val description = RequestBody.create("text/plain".toMediaTypeOrNull(), "Документ для пропуска")
-
+        /*
         RetrofitClient.instance.uploadFile(body, description).enqueue(object : Callback<FileUploadResponse> {
             override fun onResponse(call: Call<FileUploadResponse>, response: Response<FileUploadResponse>) {
                 if (response.isSuccessful) {
@@ -84,10 +85,12 @@ class PassViewModel : ViewModel() {
                 onResult(false, null)
             }
         })
+        */
     }
 
     // Метод для загрузки списка пропусков
     fun loadPasses() {
+        /*
         _loading.value = true // Отмечаем, что загрузка началась
         RetrofitClient.instance.getPasses().enqueue(object : Callback<PassListResponse> {
             override fun onResponse(call: Call<PassListResponse>, response: Response<PassListResponse>) {
@@ -106,5 +109,7 @@ class PassViewModel : ViewModel() {
                 _error.value = t.message ?: "Неизвестная ошибка"
             }
         })
+
+         */
     }
 }
