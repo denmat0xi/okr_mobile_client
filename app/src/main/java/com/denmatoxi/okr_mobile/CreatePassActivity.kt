@@ -86,6 +86,7 @@ class CreatePassActivity : AppCompatActivity() {
         }
 
         if (fileUri != null) {
+            /*
             passViewModel.uploadFile(this, fileUri!!) { success, fileUrl ->
                 if (success) {
                     createPassRequest(reason, startDate!!, endDate!!, fileUrl)
@@ -93,12 +94,16 @@ class CreatePassActivity : AppCompatActivity() {
                     Toast.makeText(this, "Ошибка загрузки файла", Toast.LENGTH_SHORT).show()
                 }
             }
+
+             */
+            Toast.makeText(this, "fileUri not null", Toast.LENGTH_SHORT).show()
         } else {
             createPassRequest(reason, startDate!!, endDate!!, null)
         }
     }
 
     private fun createPassRequest(reason: String, startDate: String, endDate: String, fileUrl: String?) {
+        /*
         passViewModel.createPass(reason, startDate, endDate, fileUrl) { success ->
             if (success) {
                 Toast.makeText(this, "Заявка отправлена!", Toast.LENGTH_SHORT).show()
@@ -107,6 +112,8 @@ class CreatePassActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ошибка отправки", Toast.LENGTH_SHORT).show()
             }
         }
+         */
+        Toast.makeText(this, "createPassRequest called", Toast.LENGTH_SHORT).show()
     }
 
     companion object {
