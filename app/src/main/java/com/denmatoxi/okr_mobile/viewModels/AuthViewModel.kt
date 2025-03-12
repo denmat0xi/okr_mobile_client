@@ -15,13 +15,16 @@ class AuthViewModel : ViewModel() {
         call.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (response.isSuccessful) {
+                    Log.d("Login operation", response.body()!!.token)
                     onResult(true, response.body()?.token)
                 } else {
+                    Log.d("Login operation", "No login")
                     onResult(false, null)
                 }
             }
 
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                Log.d("Login operation", "Failed (onFailure invoked)")
                 onResult(false, null)
             }
         })

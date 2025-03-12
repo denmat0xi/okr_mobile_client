@@ -57,20 +57,31 @@ class PassViewModel : ViewModel() {
 
         val requestFile = RequestBody.create("application/pdf".toMediaTypeOrNull(), file)
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val description = RequestBody.create("text/plain".toMediaTypeOrNull(), "Документ для пропуска")
+        val description =
+            RequestBody.create("text/plain".toMediaTypeOrNull(), "Документ для пропуска")
+        /*
+        RetrofitClient.instance.uploadFile(body, description)
+            .enqueue(object : Callback<FileUploadResponse> {
+                override fun onResponse(
+                    call: Call<FileUploadResponse>,
+                    response: Response<FileUploadResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onResult(true, response.body()?.fileUrl)
+                    } else {
+                        onResult(false, null)
+                    }
+                }
 
-        RetrofitClient.instance.uploadFile(body, description).enqueue(object : Callback<FileUploadResponse> {
-            override fun onResponse(call: Call<FileUploadResponse>, response: Response<FileUploadResponse>) {
-                if (response.isSuccessful) {
-                    onResult(true, response.body()?.fileUrl)
-                } else {
+                override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
                     onResult(false, null)
                 }
-            }
-            override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
-                onResult(false, null)
-            }
-        })
+            })
+
+         */
+    }
+
+
 
     fun loadPasses() {
         _loading.value = true

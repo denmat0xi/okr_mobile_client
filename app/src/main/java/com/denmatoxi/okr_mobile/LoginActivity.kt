@@ -31,13 +31,13 @@ class LoginActivity : AppCompatActivity() {
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 //TODO("Ввести проверку по токену (да и вообще связать приложение с бэком)")
-                /*
+
                 authViewModel.login(username, password) { success, token ->
                     if (success) {
                         tvStatus.text = "Вход успешен"
                         Log.w("LoginActivity","Вошел на кондициях аййй лев")
-                        startActivity(Intent(this, TempActivity::class.java))
-                        finish()
+                        //startActivity(Intent(this, TempActivity::class.java))
+                        //finish()
                     } else {
                         tvStatus.text = "Ошибка входа"
                         Log.w("LoginActivity","Не вошел эххххх")
@@ -45,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
 
 
                 }
-                */
-                startActivity(Intent(this, TempActivity::class.java))
+
+                //startActivity(Intent(this, TempActivity::class.java))
             } else {
                 tvStatus.text = "Введите логин и пароль"
             }

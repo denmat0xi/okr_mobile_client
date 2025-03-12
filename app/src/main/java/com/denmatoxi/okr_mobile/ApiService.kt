@@ -5,6 +5,7 @@ import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
 import com.denmatoxi.okr_mobile.dataClasses.Pass
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -19,7 +20,7 @@ interface ApiService {
     fun register()
 
     @POST("/login")
-    fun getPass(loginRequest: LoginRequest): Call<AuthResponse>
+    fun getPass(@Body loginRequest: LoginRequest): Call<AuthResponse>
 
     @POST("/logout")
     fun uploadFile()
