@@ -3,6 +3,7 @@ package com.denmatoxi.okr_mobile
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
 import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
 import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.http.Body
@@ -15,18 +16,14 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
-    //Account
-    @POST("/registration")
-    fun register()
-
     @POST("/login")
     fun getPass(@Body loginRequest: LoginRequest): Call<AuthResponse>
 
     @POST("/logout")
     fun uploadFile()
 
-    /*@GET("/profile")
-    fun createPass()*/
+    @GET("/profile")
+    fun createPass()
 
     @PUT("/profile")
     fun getProfile()
@@ -39,7 +36,7 @@ interface ApiService {
     fun createPass(pass: Pass) : Call<Pass>
 
     @PUT("/application/{id}")
-    fun name3()
+    fun editPass(@Path("id") passId : String) : Call<Pass>
 
     @DELETE("/application/{id}")
     fun name4()

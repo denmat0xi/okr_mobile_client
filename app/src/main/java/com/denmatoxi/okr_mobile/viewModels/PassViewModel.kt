@@ -27,6 +27,8 @@ class PassViewModel : ViewModel() {
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
+
+
     fun createPass(
         id: Int,
         userId: Int,
@@ -37,6 +39,7 @@ class PassViewModel : ViewModel() {
         fileUrl: String,
         onResult: (Boolean) -> Unit
     ) {
+        /*
         val passRequest = Pass(id, userId, reason, startDate, endDate, status, fileUrl)
         RetrofitClient.instance.createPass(passRequest).enqueue(object : Callback<Pass> {
             override fun onResponse(call: Call<Pass>, response: Response<Pass>) {
@@ -50,6 +53,7 @@ class PassViewModel : ViewModel() {
                 onResult(false)
             }
         })
+         */
     }
 
     fun uploadFile(context: Context, fileUri: Uri, onResult: (Boolean, String?) -> Unit) {
@@ -89,6 +93,7 @@ class PassViewModel : ViewModel() {
             override fun onResponse(call: Call<List<Pass>>, response: Response<List<Pass>>) {
                 if (response.isSuccessful) {
                     _passes.value = response.body() ?: emptyList()
+
                 } else {
                     _passes.value = emptyList()
                     _error.value = "Не удалось загрузить пропуски"

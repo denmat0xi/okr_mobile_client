@@ -35,12 +35,11 @@ class LoginActivity : AppCompatActivity() {
                 authViewModel.login(username, password) { success, token ->
                     if (success) {
                         tvStatus.text = "Вход успешен"
-                        Log.w("LoginActivity","Вошел на кондициях аййй лев")
-                        //startActivity(Intent(this, TempActivity::class.java))
-                        //finish()
+                        startActivity(Intent(this, TempActivity::class.java))
+                        finish()
                     } else {
                         tvStatus.text = "Ошибка входа"
-                        Log.w("LoginActivity","Не вошел эххххх")
+                        Log.w("LoginActivity","Не вошел")
                     }
 
 

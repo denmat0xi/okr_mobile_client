@@ -5,8 +5,23 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btn_login_mainActivity"
+        android:id="@+id/btn_to_login"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:text="Войти" />
+        android:layout_height="wrap_content"
+        android:text="To login"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_to_pass_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To showing pass list"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_to_create_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To create pass" />
+
 </LinearLayout>
