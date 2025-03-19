@@ -1,6 +1,6 @@
 package com.denmatoxi.okr_mobile.dataClasses
 
-data class PassRequest(
+data class ApplicationRequest(
     val reason: String,
     val startDate: String,
     val endDate: String,

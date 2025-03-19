@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.denmatoxi.okr_mobile.FileUtils
 import com.denmatoxi.okr_mobile.dataClasses.FileUploadResponse
-import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.RetrofitClient
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -16,10 +16,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PassViewModel : ViewModel() {
+class ApplicationViewModel : ViewModel() {
 
-    private val _passes = MutableLiveData<List<Pass>>()
-    val passes: LiveData<List<Pass>> = _passes
+    private val _passes = MutableLiveData<List<Application>>()
+    val passes: LiveData<List<Application>> = _passes
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
@@ -40,16 +40,16 @@ class PassViewModel : ViewModel() {
         onResult: (Boolean) -> Unit
     ) {
         /*
-        val passRequest = Pass(id, userId, reason, startDate, endDate, status, fileUrl)
-        RetrofitClient.instance.createPass(passRequest).enqueue(object : Callback<Pass> {
-            override fun onResponse(call: Call<Pass>, response: Response<Pass>) {
+        val applicationRequest = Application(id, userId, reason, startDate, endDate, status, fileUrl)
+        RetrofitClient.instance.createPass(applicationRequest).enqueue(object : Callback<Application> {
+            override fun onResponse(call: Call<Application>, response: Response<Application>) {
                 if (response.isSuccessful) {
                     onResult(true)
                 } else {
                     onResult(false)
                 }
             }
-            override fun onFailure(call: Call<Pass>, t: Throwable) {
+            override fun onFailure(call: Call<Application>, t: Throwable) {
                 onResult(false)
             }
         })
@@ -89,8 +89,8 @@ class PassViewModel : ViewModel() {
 
     fun loadPasses() {
         _loading.value = true
-        RetrofitClient.instance.getPasses().enqueue(object : Callback<List<Pass>> {
-            override fun onResponse(call: Call<List<Pass>>, response: Response<List<Pass>>) {
+        RetrofitClient.instance.getPasses().enqueue(object : Callback<List<Application>> {
+            override fun onResponse(call: Call<List<Application>>, response: Response<List<Application>>) {
                 if (response.isSuccessful) {
                     _passes.value = response.body() ?: emptyList()
 
@@ -99,8 +99,8 @@ class PassViewModel : ViewModel() {
                     _error.value = "Не удалось загрузить пропуски"
                 }
             }
-            override fun onFailure(call: Call<List<Pass>>, t: Throwable) {
-                _loading.value = false // Завершаем загрузку
+            override fun onFailure(call: Call<List<Application>>, t: Throwable) {
+                _loading.value = false
                 _passes.value = emptyList()
                 _error.value = t.message ?: "Неизвестная ошибка"
             }

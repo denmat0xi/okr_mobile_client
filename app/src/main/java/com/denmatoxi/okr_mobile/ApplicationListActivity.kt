@@ -9,14 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.adapters.PassListAdapter
-import com.denmatoxi.okr_mobile.dataClasses.Pass
-import com.denmatoxi.okr_mobile.viewModels.PassListViewModel
+import com.denmatoxi.okr_mobile.dataClasses.Application
+//import com.denmatoxi.okr_mobile.viewModels.PassListViewModel
 
 class PassListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var passListAdapter: PassListAdapter
-    private val passListViewModel: PassListViewModel by viewModels()
+    //private val passListViewModel: PassListViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class PassListActivity : AppCompatActivity() {
         passListViewModel.loadPasses()
     }
 
-    private fun openPassDetails(pass: Pass) {
+    private fun openPassDetails(pass: Application) {
         val intent = Intent(this, PassDetailsActivity::class.java)
         intent.putExtra("passId", pass.id.toString())
         intent.putExtra("passUserId", pass.userId.toString())

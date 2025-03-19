@@ -8,11 +8,11 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.denmatoxi.okr_mobile.viewModels.PassViewModel
+import com.denmatoxi.okr_mobile.viewModels.ApplicationViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreatePassActivity : AppCompatActivity() {
+class CreateApplicationActivity : AppCompatActivity() {
 
     private lateinit var etReason: EditText
     private lateinit var btnStartDate: Button
@@ -76,7 +76,7 @@ class CreatePassActivity : AppCompatActivity() {
         }
     }
 
-    private val passViewModel: PassViewModel by viewModels()
+    private val applicationViewModel: ApplicationViewModel by viewModels()
 
     private fun submitPassRequest() {
         val reason = etReason.text.toString()

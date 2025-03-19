@@ -3,7 +3,7 @@ package com.denmatoxi.okr_mobile.dataClasses
 import com.google.gson.annotations.SerializedName
 import java.util.UUID
 
-data class Pass(
+data class Application(
     @SerializedName("id")
     val id: UUID,
     @SerializedName("userId")
@@ -15,7 +15,7 @@ data class Pass(
     @SerializedName("toDate")
     val endDate: String,
     @SerializedName("status")
-    val status: String
-//    @SerializedName("extensions")
-//    val fileUrl: List<String>
+    val status: String,
+    @SerializedName("extensions")
+    val fileUrl: List<String>
 )
