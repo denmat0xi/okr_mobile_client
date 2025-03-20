@@ -1,4 +1,4 @@
-package com.denmatoxi.okr_mobile
+package com.denmatoxi.okr_mobile.activities
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.viewModels.ApplicationViewModel
 import java.text.SimpleDateFormat
 import java.util.*

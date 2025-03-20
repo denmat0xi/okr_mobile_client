@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.R
-import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.Application
 
-class PassListAdapter(data: List<Pass>, val onItemClick: (Pass) -> Unit) :
+class PassListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
     RecyclerView.Adapter<PassListAdapter.PassListViewHolder>() {
 
-    private var passList: List<Pass> = data
+    private var passList: List<Application> = data
 
     inner class PassListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvReason: TextView = itemView.findViewById(R.id.tvReason)
         private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
         private val tvDates: TextView = itemView.findViewById(R.id.tvDates)
 
-        fun bind(pass: Pass) {
+        fun bind(pass: Application) {
             tvReason.text = pass.reason
             tvStatus.text = pass.status
             tvDates.text = "${pass.startDate} - ${pass.endDate}"
@@ -44,7 +44,7 @@ class PassListAdapter(data: List<Pass>, val onItemClick: (Pass) -> Unit) :
 
     override fun getItemCount(): Int = passList.size
 
-    fun updateData(data: List<Pass>) {
+    fun updateData(data: List<Application>) {
         //Log.d("update data", data.toString())
         passList = data
         notifyDataSetChanged()

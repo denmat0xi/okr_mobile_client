@@ -1,41 +1,49 @@
-package com.denmatoxi.okr_mobile
+package com.denmatoxi.okr_mobile.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.adapters.PassListAdapter
 import com.denmatoxi.okr_mobile.dataClasses.Application
-//import com.denmatoxi.okr_mobile.viewModels.PassListViewModel
+import com.denmatoxi.okr_mobile.viewModels.ApplicationListViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class PassListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var passListAdapter: PassListAdapter
-    //private val passListViewModel: PassListViewModel by viewModels()
+
+    private lateinit var addPassButton: FloatingActionButton
+    private val applicationListViewModel: ApplicationListViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pass_list)
 
+
         recyclerView = findViewById(R.id.rvPasses)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         passListAdapter = PassListAdapter(emptyList()) { pass -> openPassDetails(pass) }
         recyclerView.adapter = passListAdapter
 
-        passListViewModel.passes.observe(this) { newData ->
+        applicationListViewModel.passes.observe(this) { newData ->
             passListAdapter.updateData(newData)
             Log.d("Observe", "observer caught data update, data is ${newData}")
         }
 
+        addPassButton = findViewById(R.id.btn_add_pass)
+        addPassButton.setOnClickListener { view: View ->
+            startActivity(Intent(this, CreateApplicationActivity::class.java))
+        }
 
-        passListViewModel.loadPasses()
+        applicationListViewModel.loadPasses()
     }
 
     private fun openPassDetails(pass: Application) {

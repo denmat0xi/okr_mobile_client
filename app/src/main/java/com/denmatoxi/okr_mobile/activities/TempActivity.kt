@@ -1,8 +1,8 @@
-package com.denmatoxi.okr_mobile
+package com.denmatoxi.okr_mobile.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import com.denmatoxi.okr_mobile.R
 
 class TempActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

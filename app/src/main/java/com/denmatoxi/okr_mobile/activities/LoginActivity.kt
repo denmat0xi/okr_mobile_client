@@ -1,6 +1,5 @@
-package com.denmatoxi.okr_mobile
+package com.denmatoxi.okr_mobile.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +8,8 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.viewModels.AuthViewModel
-import java.io.Console
 
 class LoginActivity : AppCompatActivity() {
 
@@ -34,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
                 authViewModel.login(username, password) { success, token ->
                     if (success) {
+
                         tvStatus.text = "Вход успешен"
                         startActivity(Intent(this, TempActivity::class.java))
                         finish()
