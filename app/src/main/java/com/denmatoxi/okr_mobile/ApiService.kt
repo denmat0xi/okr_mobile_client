@@ -2,7 +2,10 @@ package com.denmatoxi.okr_mobile
 
 import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.dataClasses.EditProfileRequest
+import com.denmatoxi.okr_mobile.dataClasses.EditProfileResponse
 import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.dataClasses.ProfileResponse
 import com.denmatoxi.okr_mobile.dataClasses.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -24,11 +27,11 @@ interface ApiService {
     fun logout() : Call<Unit>
 
     @GET("/profile")
-    fun createApplication()
+    fun getProfileDetails() : Call<ProfileResponse>
 
 
     @PUT("/profile")
-    fun getProfile()
+    fun updateProfile(editedProfile: EditProfileRequest) : Call<EditProfileResponse>
 
     //Application
     @GET("/application")
