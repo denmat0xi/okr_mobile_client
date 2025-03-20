@@ -13,7 +13,6 @@ import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.RetrofitClient
 import com.denmatoxi.okr_mobile.SessionManager
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
-import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
 import com.denmatoxi.okr_mobile.dataClasses.RegisterRequest
 import com.denmatoxi.okr_mobile.viewModels.AuthViewModel
 import retrofit2.Call
