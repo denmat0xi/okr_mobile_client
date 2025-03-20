@@ -49,6 +49,8 @@ class ImageUtils(private val activity: Activity) {
 
 
 /* Пример использования класса. В данном случае ставлю его в ImageView
+
+private val imageUtils = ImageUtils(this)
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -67,4 +69,17 @@ override fun onCreate(savedInstanceState: Bundle?) {
                 }
             }
         }
-    }*/
+    }
+
+    Обрабатываю результат выбора изображения
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == ImageUtils.IMAGE_PICKER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val selectedImageUri: Uri? = data?.data
+            selectedImageUri?.let {
+                imageUtils.imagePickerCallback?.invoke(it)  // Передаю URI в callback
+            }
+        }
+    }
+    */
