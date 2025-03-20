@@ -5,36 +5,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
-import com.denmatoxi.okr_mobile.dataClasses.Pass
+import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.viewModels.AuthViewModel
-import com.denmatoxi.okr_mobile.viewModels.PassListViewModel
-import com.denmatoxi.okr_mobile.viewModels.PassViewModel
 
 class MainActivity : AppCompatActivity() {
-//    private val passListViewModel: PassListViewModel by viewModels()
-//
-//    private lateinit var passRecyclerView: RecyclerView
-//    private lateinit var passAdapter: PassAdapter
+
+    private var createApplicationDialog: CreateApplicationDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        passRecyclerView = findViewById(R.id.rvPasses)
-//        passRecyclerView.layoutManager = LinearLayoutManager(this)
-//
-//
-//        passAdapter = PassAdapter(passListViewModel.passes?.value ?: emptyList(), {pass:Pass -> Unit})
-
         val loginButton = findViewById<Button>(R.id.btn_to_login)
         val passListButton = findViewById<Button>(R.id.btn_to_pass_list)
         val createPassButton = findViewById<Button>(R.id.btn_to_create_pass)
-
 
         loginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -45,8 +35,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         createPassButton.setOnClickListener {
-            val intent = Intent(this, CreatePassActivity::class.java)
-            startActivity(intent)
+            showCreatePassDialog()
+        }
+    }
+
+    private fun showCreatePassDialog() {
+        createApplicationDialog = CreateApplicationDialog(this) { fromDate, toDate, description, imageBase64 ->
+            //TODO реализовать загрузку на бэк
+            Toast.makeText(this, "Пропуск создан", Toast.LENGTH_SHORT).show()
+        }
+        createApplicationDialog?.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CreateApplicationDialog.IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK) {
+            createApplicationDialog?.handleImageResult(data)
         }
     }
 }
