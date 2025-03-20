@@ -3,7 +3,7 @@
     <data>
         <variable
             name="pass"
-            type="com.denmatoxi.okr_mobile.dataClasses.Pass" />
+            type="com.denmatoxi.okr_mobile.dataClasses.Application" />
     </data>
 
     <LinearLayout
