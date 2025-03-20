@@ -3,7 +3,7 @@ package com.denmatoxi.okr_mobile.dataClasses
 import com.google.gson.annotations.SerializedName
 import java.util.UUID
 
-data class CreateApplicationResponse (
+data class ChangeApplicationExtensionStatusResponse (
     @SerializedName("id")
     val id: UUID,
     @SerializedName("userId")
@@ -19,5 +19,7 @@ data class CreateApplicationResponse (
     @SerializedName("comment")
     val comment: String,
     @SerializedName("image")
-    val image: String
+    val image: String,
+    @SerializedName("extensions")
+    val extensions: List<Extension>
 )

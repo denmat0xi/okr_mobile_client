@@ -29,7 +29,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 //        passRecyclerView = findViewById(R.id.rvPasses)
 //        passRecyclerView.layoutManager = LinearLayoutManager(this)
 //

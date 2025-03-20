@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.denmatoxi.okr_mobile.FileUtils
-import com.denmatoxi.okr_mobile.dataClasses.FileUploadResponse
 import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.RetrofitClient
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
