@@ -20,7 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private val passListViewModel: ApplicationListViewModel by viewModels()
 //
     private lateinit var applicationRecyclerView: RecyclerView
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         val createPassButton = findViewById<Button>(R.id.btn_to_create_pass)
         val registerButton = findViewById<Button>(R.id.btn_main_register)
         val testButton = findViewById<Button>(R.id.btn_test)
+        val logoutButton = findViewById<Button>(R.id.btn_main_logout)
 
         testButton.setOnClickListener {
             val call = RetrofitClient.instance(this).getPasses()
@@ -70,12 +71,45 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         passListButton.setOnClickListener {
-            val intent = Intent(this, PassListActivity::class.java)
+            val intent = Intent(this, ApplicationListActivity::class.java)
             startActivity(intent)
         }
         createPassButton.setOnClickListener {
             val intent = Intent(this, CreateApplicationActivity::class.java)
             startActivity(intent)
         }
+        logoutButton.setOnClickListener {
+            val call = RetrofitClient.instance(this).logout()
+            call.enqueue(object : Callback<Unit> {
+                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                    if (response.isSuccessful) {
+                        Log.d("Logout", "got logout")
+                        SessionManager(ctx).clearToken()
+                        startActivity(Intent(ctx, AccessActivity::class.java))
+                    } else {
+                        SessionManager(ctx).clearToken()
+                        Log.d("Logout", "logout unsuccessful")
+                    }
+                }
+
+                override fun onFailure(call: Call<Unit>, t: Throwable) {
+                    SessionManager(ctx).clearToken()
+                    Log.d("Logout", "Failed (onFailure invoked)")
+                }
+            })
+        }
+    }
+
+    override fun onStart()
+    {
+        super.onStart()
+        Log.d("onStart MainActivity", "current token ${SessionManager(this).fetchToken()}")
+
+        if (SessionManager(this).fetchToken().isNullOrEmpty()) {
+            Log.d("onStart MainActivity", "current token ${SessionManager(this).fetchToken()}")
+            val intent = Intent(this, AccessActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

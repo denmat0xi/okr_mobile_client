@@ -13,7 +13,7 @@ import com.denmatoxi.okr_mobile.viewModels.ApplicationViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreateApplicationActivity : AppCompatActivity() {
+class CreateApplicationActivity : BaseActivity() {
 
 //    private lateinit var etReason: EditText
 //    private lateinit var btnStartDate: Button

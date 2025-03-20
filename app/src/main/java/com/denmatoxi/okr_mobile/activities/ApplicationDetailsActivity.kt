@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.denmatoxi.okr_mobile.R
 
-class PassDetailsActivity : AppCompatActivity() {
+class ApplicationDetailsActivity : BaseActivity() {
 
     private lateinit var idValueView: TextView
     private lateinit var userIdValueView: TextView

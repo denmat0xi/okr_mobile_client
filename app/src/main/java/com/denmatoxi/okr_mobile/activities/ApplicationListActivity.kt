@@ -14,7 +14,7 @@ import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.viewModels.ApplicationListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class PassListActivity : AppCompatActivity() {
+class ApplicationListActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var passListAdapter: ApplicationListAdapter
@@ -47,7 +47,7 @@ class PassListActivity : AppCompatActivity() {
     }
 
     private fun openPassDetails(pass: Application) {
-        val intent = Intent(this, PassDetailsActivity::class.java)
+        val intent = Intent(this, ApplicationDetailsActivity::class.java)
         intent.putExtra("passId", pass.id.toString())
         intent.putExtra("passUserId", pass.userId.toString())
         intent.putExtra("passDescription", pass.reason)

@@ -10,7 +10,8 @@ class SessionManager(context: Context) {
     companion object {
         const val USER_TOKEN = "user_token"
     }
-
+    val isAuthorized: Boolean
+        get() = !fetchToken().isNullOrEmpty()
 
     fun saveToken(token: String?) {
         if (token == null) return
