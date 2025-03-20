@@ -7,7 +7,7 @@ import com.denmatoxi.okr_mobile.R
 class TempActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_pass)
+        //setContentView(R.layout.activity_create_pass)
             //TODO("Удалить эту шнягу и ввести норм функционал заведения пропуска")
     }
 }

@@ -87,9 +87,9 @@ class ApplicationViewModel : ViewModel() {
 
 
 
-    fun loadPasses() {
+    fun loadPasses(context: Context) {
         _loading.value = true
-        RetrofitClient.instance.getPasses().enqueue(object : Callback<List<Application>> {
+        RetrofitClient.instance(context).getPasses().enqueue(object : Callback<List<Application>> {
             override fun onResponse(call: Call<List<Application>>, response: Response<List<Application>>) {
                 if (response.isSuccessful) {
                     _passes.value = response.body() ?: emptyList()

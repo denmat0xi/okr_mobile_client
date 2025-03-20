@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/et_register_surname"
+        android:hint="surname"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_register_name"
+        android:hint="name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_register_patronymic"
+        android:hint="patronymic"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_register_email"
+        android:hint="email"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_register_password"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_register_confirm_password"
+        android:hint="confirm password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="138dp">
+    </EditText>
+
+
+    <TextView
+        android:id="@+id/tv_register_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="center"
+        android:paddingTop="10dp" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_register_cancel"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/btn_register_ok"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="Ok" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

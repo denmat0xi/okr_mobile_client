@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.denmatoxi.okr_mobile.R
+import com.denmatoxi.okr_mobile.SessionManager
 import com.denmatoxi.okr_mobile.viewModels.AuthViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -31,18 +32,17 @@ class LoginActivity : AppCompatActivity() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 //TODO("Ввести проверку по токену (да и вообще связать приложение с бэком)")
 
-                authViewModel.login(username, password) { success, token ->
+                authViewModel.login(this, username, password) { success, token ->
                     if (success) {
-
+                        val sessionManager = SessionManager(this)
+                        sessionManager.saveToken(token)
                         tvStatus.text = "Вход успешен"
-                        startActivity(Intent(this, TempActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     } else {
                         tvStatus.text = "Ошибка входа"
                         Log.w("LoginActivity","Не вошел")
                     }
-
-
                 }
 
                 //startActivity(Intent(this, TempActivity::class.java))

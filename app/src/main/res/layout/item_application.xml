@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="pass"
+            name="application"
             type="com.denmatoxi.okr_mobile.dataClasses.Application" />
     </data>
 
@@ -18,19 +18,19 @@
             android:id="@+id/tvReason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{pass.reason}"
+            android:text="@{application.reason}"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{pass.status}" />
+            android:text="@{application.status}" />
 
         <TextView
             android:id="@+id/tvDates"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{pass.startDate + pass.endDate}" />
+            android:text="@{application.startDate + application.endDate}" />
     </LinearLayout>
 </layout>

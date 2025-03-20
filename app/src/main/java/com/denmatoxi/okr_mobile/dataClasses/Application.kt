@@ -16,6 +16,10 @@ data class Application(
     val endDate: String,
     @SerializedName("status")
     val status: String,
+    @SerializedName("comment")
+    val comment: String,
+    @SerializedName("image")
+    val image: String,
     @SerializedName("extensions")
-    val fileUrl: List<String>
+    val extensions: List<Extension>
 )

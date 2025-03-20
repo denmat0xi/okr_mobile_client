@@ -1,5 +1,6 @@
 package com.denmatoxi.okr_mobile.viewModels
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
@@ -10,8 +11,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AuthViewModel : ViewModel() {
-    fun login(username: String, password: String, onResult: (Boolean, String?) -> Unit) {
-        val call = RetrofitClient.instance.getApplication(LoginRequest(username, password))
+    fun login(context: Context, username: String, password: String, onResult: (Boolean, String?) -> Unit) {
+        val call = RetrofitClient.instance(context).login(LoginRequest(username, password))
         call.enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 if (response.isSuccessful) {

@@ -1,5 +1,6 @@
 package com.denmatoxi.okr_mobile.dataClasses
 
+import com.denmatoxi.okr_mobile.enums.Status
 import com.google.gson.annotations.SerializedName
 import java.util.UUID
 

@@ -1,5 +1,5 @@
-package com.denmatoxi.okr_mobile.dataClasses
+package com.denmatoxi.okr_mobile.enums
 
 enum class Status {
-    //TODO добавить статусы заявок
+    inProcess, Accepted, Rejected
 }

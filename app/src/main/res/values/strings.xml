@@ -22,4 +22,6 @@
     <string name="details">Причина:</string>
     <string name="details_document">Прикрепленный документ:</string>
     <string name="details_download_document">Открыть документ</string>
+    <string name="en_sign_up">Sign up</string>
+    <string name="en_sign_in">Sign in</string>
 </resources>

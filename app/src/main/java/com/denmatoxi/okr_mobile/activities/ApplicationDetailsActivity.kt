@@ -17,7 +17,7 @@ class PassDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pass_details)
+        setContentView(R.layout.activity_application_details)
 
         findViewById<TextView>(R.id.id_value).text = intent.getStringExtra("passId")
         findViewById<TextView>(R.id.description_value).text = intent.getStringExtra("passDescription")

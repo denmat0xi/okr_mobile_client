@@ -3,7 +3,7 @@ package com.denmatoxi.okr_mobile.dataClasses
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class RegistrationRequest(
+data class RegisterRequest(
     @SerializedName("surname")
     val surname: String,
     @SerializedName("name")
@@ -15,6 +15,5 @@ data class RegistrationRequest(
     @SerializedName("password")
     val password: String,
     @SerializedName("confirmPassword")
-    @Expose(deserialize=false, serialize=false)
     val confirmPassword: String
 )

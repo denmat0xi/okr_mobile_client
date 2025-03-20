@@ -3,6 +3,7 @@ package com.denmatoxi.okr_mobile
 import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
 import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
+import com.denmatoxi.okr_mobile.dataClasses.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -12,14 +13,19 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
+
+    @POST("/registration")
+    fun register(@Body registerRequest: RegisterRequest): Call<AuthResponse>
+
     @POST("/login")
-    fun getApplication(@Body loginRequest: LoginRequest): Call<AuthResponse>
+    fun login(@Body loginRequest: LoginRequest): Call<AuthResponse>
 
     @POST("/logout")
-    fun uploadFile()
+    fun logout() : Call<Unit>
 
     @GET("/profile")
     fun createApplication()
+
 
     @PUT("/profile")
     fun getProfile()

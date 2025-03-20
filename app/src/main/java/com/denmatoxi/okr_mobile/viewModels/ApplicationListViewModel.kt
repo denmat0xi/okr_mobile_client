@@ -1,5 +1,6 @@
 package com.denmatoxi.okr_mobile.viewModels
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,8 +16,8 @@ class ApplicationListViewModel : ViewModel() {
     private val _passes = MutableLiveData<List<Application>>()
     val passes: LiveData<List<Application>> = _passes
 
-    fun loadPasses() {
-        RetrofitClient.instance.getPasses().enqueue(object : Callback<List<Application>> {
+    fun loadPasses(context: Context) {
+        RetrofitClient.instance(context).getPasses().enqueue(object : Callback<List<Application>> {
             override fun onResponse(call: Call<List<Application>>, response: Response<List<Application>>) {
                 if (response.isSuccessful) {
                     _passes.value = response.body() ?: emptyList()

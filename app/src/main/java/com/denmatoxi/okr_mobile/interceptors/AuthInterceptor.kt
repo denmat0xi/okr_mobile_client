@@ -2,6 +2,7 @@ package com.denmatoxi.okr_mobile.interceptors
 
 import InjectAuth
 import android.content.Context
+import android.util.Log
 import com.denmatoxi.okr_mobile.ApiService
 import com.denmatoxi.okr_mobile.SessionManager
 import okhttp3.Interceptor
@@ -16,16 +17,22 @@ class AuthInterceptor(val context: Context) : Interceptor {
     private val sessionManager = SessionManager(context)
 
     override fun intercept(chain: Interceptor.Chain): Response {
+        Log.d("AuthInterceptor", "auth interceptor entered")
         val request = chain.request()
+        val token = sessionManager.fetchToken()
+        val newRequest = request.newBuilder()
+            .addHeader("Authorization", "Bearer $token")
+            .build()
 
-        sessionManager.fetchToken().let {
-            if (!it.isNullOrEmpty()) {
-                request.newBuilder()
-                    .addHeader("Authorization", "Bearer $it")
-                    .build()
-            }
+        Log.d("AuthInterceptor", "added header, Authorization token: $token")
+        val requestString: StringBuilder = StringBuilder()
+        for(name in request.headers.names()) {
+            requestString.append("$name: ${request.headers[name]}\n")
         }
+        Log.d("request", requestString.toString())
 
-        return chain.proceed(request)
+
+        Log.d("AuthInterceptor", "auth interceptor closing")
+        return chain.proceed(newRequest)
     }
 }

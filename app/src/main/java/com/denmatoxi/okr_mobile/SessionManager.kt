@@ -12,9 +12,16 @@ class SessionManager(context: Context) {
     }
 
 
-    fun saveToken(token: String) {
+    fun saveToken(token: String?) {
+        if (token == null) return
         val editor = preferences.edit()
         editor.putString(USER_TOKEN, token)
+        editor.apply()
+    }
+
+    fun clearToken() {
+        val editor = preferences.edit()
+        editor.putString(USER_TOKEN, null)
         editor.apply()
     }
 

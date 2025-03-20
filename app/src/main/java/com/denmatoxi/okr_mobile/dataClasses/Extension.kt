@@ -15,5 +15,7 @@ data class Extension (
     @SerializedName("image")
     val image: String,
     @SerializedName("status")
-    val status: String
+    val status: String,
+    @SerializedName("comment")
+    val comment: String
 )

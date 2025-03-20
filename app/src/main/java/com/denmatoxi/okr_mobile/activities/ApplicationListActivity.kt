@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.R
-import com.denmatoxi.okr_mobile.adapters.PassListAdapter
+import com.denmatoxi.okr_mobile.adapters.ApplicationListAdapter
 import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.viewModels.ApplicationListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class PassListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var passListAdapter: PassListAdapter
+    private lateinit var passListAdapter: ApplicationListAdapter
 
     private lateinit var addPassButton: FloatingActionButton
     private val applicationListViewModel: ApplicationListViewModel by viewModels()
@@ -25,12 +25,12 @@ class PassListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pass_list)
+        setContentView(R.layout.activity_application_list)
 
 
         recyclerView = findViewById(R.id.rvPasses)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        passListAdapter = PassListAdapter(emptyList()) { pass -> openPassDetails(pass) }
+        passListAdapter = ApplicationListAdapter(emptyList()) { application -> openPassDetails(application) }
         recyclerView.adapter = passListAdapter
 
         applicationListViewModel.passes.observe(this) { newData ->
@@ -43,7 +43,7 @@ class PassListActivity : AppCompatActivity() {
             startActivity(Intent(this, CreateApplicationActivity::class.java))
         }
 
-        applicationListViewModel.loadPasses()
+        applicationListViewModel.loadPasses(this)
     }
 
     private fun openPassDetails(pass: Application) {

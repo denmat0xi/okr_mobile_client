@@ -9,44 +9,44 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.dataClasses.Application
 
-class PassListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
-    RecyclerView.Adapter<PassListAdapter.PassListViewHolder>() {
+class ApplicationListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
+    RecyclerView.Adapter<ApplicationListAdapter.ApplicationListViewHolder>() {
 
-    private var passList: List<Application> = data
+    private var applicationList: List<Application> = data
 
-    inner class PassListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ApplicationListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvReason: TextView = itemView.findViewById(R.id.tvReason)
         private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
         private val tvDates: TextView = itemView.findViewById(R.id.tvDates)
 
-        fun bind(pass: Application) {
-            tvReason.text = pass.reason
-            tvStatus.text = pass.status
-            tvDates.text = "${pass.startDate} - ${pass.endDate}"
+        fun bind(application: Application) {
+            tvReason.text = application.reason
+            tvStatus.text = application.status
+            tvDates.text = "${application.startDate} - ${application.endDate}"
 
             itemView.setOnClickListener {
-                onItemClick(pass)
+                onItemClick(application)
             }
-            Log.d("Bind", "binding happened with Pass reason ${pass.reason}")
+            Log.d("Bind", "binding happened with application reason ${application.reason}")
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationListViewHolder {
         val view = LayoutInflater.from(parent.context).
-                inflate(R.layout.item_pass, parent, false)
-        return PassListViewHolder(view)
+                inflate(R.layout.item_application, parent, false)
+        return ApplicationListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: PassListViewHolder, position: Int) {
-        if (position > 0 && position < passList.size)
-            holder.bind(passList[position])
+    override fun onBindViewHolder(holder: ApplicationListViewHolder, position: Int) {
+        if (position > 0 && position < applicationList.size)
+            holder.bind(applicationList[position])
     }
 
-    override fun getItemCount(): Int = passList.size
+    override fun getItemCount(): Int = applicationList.size
 
     fun updateData(data: List<Application>) {
         //Log.d("update data", data.toString())
-        passList = data
+        applicationList = data
         notifyDataSetChanged()
     }
 }
