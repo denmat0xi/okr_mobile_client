@@ -12,6 +12,7 @@ import com.denmatoxi.okr_mobile.RetrofitClient
 import com.denmatoxi.okr_mobile.dataClasses.ProfileResponse
 import com.denmatoxi.okr_mobile.dataClasses.EditProfileRequest
 import com.denmatoxi.okr_mobile.dataClasses.EditProfileResponse
+import com.denmatoxi.okr_mobile.dataClasses.GetUserProfileResponse
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,10 +42,13 @@ class ProfileActivity : AppCompatActivity() {
         tvPatronymic: TextView,
         tvEmail: TextView
     ) {
-        val call = RetrofitClient.instance(this).getProfileDetails()
+        val call = RetrofitClient.instance(this).getProfile()
 
-        call.enqueue(object : Callback<ProfileResponse> {
-            override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
+        call.enqueue(object : Callback<GetUserProfileResponse> {
+            override fun onResponse(
+                call: Call<GetUserProfileResponse>,
+                response: Response<GetUserProfileResponse>
+            ) {
                 if (response.isSuccessful) {
                     val profile = response.body()
                     if (profile != null) {
@@ -58,7 +62,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetUserProfileResponse>, t: Throwable) {
                 Toast.makeText(this@ProfileActivity, "Ошибка сети", Toast.LENGTH_SHORT).show()
                 Log.e("ProfileActivity", "Ошибка загрузки данных", t)
             }
@@ -97,7 +101,7 @@ class ProfileActivity : AppCompatActivity() {
         tvPatronymic: TextView
     ) {
         val request = EditProfileRequest(surname, name, patronymic)
-        val call = RetrofitClient.instance(this).updateProfile(request)
+        val call = RetrofitClient.instance(this).editProfile(request)
 
         call.enqueue(object : Callback<EditProfileResponse> {
             override fun onResponse(
