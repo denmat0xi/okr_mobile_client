@@ -17,11 +17,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApplicationDetailsActivity : BaseActivity() {
+class ExtensionDetailsActivity : BaseActivity() {
 
-    private lateinit var btnAddExtension: Button
+    private lateinit var btnBack: Button
     private lateinit var imageView: ImageView
 
+    private lateinit var applicationId: String
+    private var extensionIndex: Int = 0
 
     private val ctx = this
 
@@ -38,22 +40,25 @@ class ApplicationDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_application_details)
-        btnAddExtension = findViewById(R.id.btn_edit_pass)
-        imageView = findViewById(R.id.image_application)
 
+        setContentView(R.layout.activity_extension_details)
+        btnBack = findViewById(R.id.btn_extension_details_back)
+        imageView = findViewById(R.id.iv_extension_details_image_application)
+        applicationId = intent.getStringExtra("applicationId").toString()
+        extensionIndex = intent.getIntExtra("extensionIndex", extensionIndex)
 
         val call = RetrofitClient.instance(this).getApplication(intent.getStringExtra("applicationId")!!)
         call.enqueue(object : Callback<GetApplicationResponse> {
             override fun onResponse(call: Call<GetApplicationResponse>, response: Response<GetApplicationResponse>) {
                 if (response.isSuccessful) {
-                    findViewById<TextView>(R.id.id_value).text = response.body()?.id
-                    findViewById<TextView>(R.id.description_value).text  = response.body()?.description
-                    findViewById<TextView>(R.id.user_id_value).text = response.body()?.userId
-                    findViewById<TextView>(R.id.from_date_value).text = response.body()?.fromDate
-                    findViewById<TextView>(R.id.to_date_value).text = response.body()?.toDate
-                    findViewById<TextView>(R.id.status_value).text = response.body()?.status
-                    findViewById<ImageView>(R.id.image_application).setImageBitmap(base64ToBitmap(response.body()?.image!!))
+                    findViewById<TextView>(R.id.tv_extension_details_description_value).text  =
+                        response.body()!!.extensions[extensionIndex].description
+                    findViewById<TextView>(R.id.tv_extension_details_to_date_value).text =
+                        response.body()!!.extensions[extensionIndex].extensionToDate
+                    findViewById<TextView>(R.id.tv_extension_details_status_value).text =
+                        response.body()!!.extensions[extensionIndex].status
+                    findViewById<ImageView>(R.id.iv_extension_details_image_application).setImageBitmap(base64ToBitmap(
+                        response.body()!!.extensions[extensionIndex].image))
                 }
                 else {
                     Log.d("ApplicationActivity","Failure")
@@ -67,16 +72,9 @@ class ApplicationDetailsActivity : BaseActivity() {
         })
 
 
-        btnAddExtension.setOnClickListener {
-            val intent = Intent(ctx, ExtensionListActivity::class.java)
-
-            intent.putExtra("applicationId", findViewById<TextView>(R.id.id_value).text)
-
-            Log.d("Put in intent", "application id from intent: ${intent.getStringExtra("applicationId")}")
-            startActivity(intent)
+        btnBack.setOnClickListener {
+            finish()
         }
-
-        Log.d("PassDetailsActivity", findViewById<TextView>(R.id.status_value).text.toString())
     }
     
     

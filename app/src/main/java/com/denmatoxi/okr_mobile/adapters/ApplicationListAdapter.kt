@@ -38,8 +38,7 @@ class ApplicationListAdapter(data: List<Application>, val onItemClick: (Applicat
     }
 
     override fun onBindViewHolder(holder: ApplicationListViewHolder, position: Int) {
-        if (position > 0 && position < applicationList.size)
-            holder.bind(applicationList[position])
+        holder.bind(applicationList[position])
     }
 
     override fun getItemCount(): Int = applicationList.size

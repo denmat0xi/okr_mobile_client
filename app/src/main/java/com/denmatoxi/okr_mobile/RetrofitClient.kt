@@ -12,7 +12,7 @@ object RetrofitClient {
 
     fun httpClient(context: Context): OkHttpClient = OkHttpClient().newBuilder()
         .addInterceptor(AuthInterceptor(context))
-        .addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
+        //.addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
         .build()
 
     fun instance(context: Context): ApiService =

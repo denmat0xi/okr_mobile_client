@@ -8,26 +8,27 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.dataClasses.Application
+import com.denmatoxi.okr_mobile.dataClasses.Extension
 
-class ExtensionListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
+class ExtensionListAdapter(data: List<Extension>, val onItemClick: (View) -> Unit) :
     RecyclerView.Adapter<ExtensionListAdapter.ExtensionListViewHolder>() {
 
-    private var applicationList: List<Application> = data
+    private var extensionList: List<Extension> = data
 
     inner class ExtensionListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvReason: TextView = itemView.findViewById(R.id.tvReason)
-        private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
-        private val tvDates: TextView = itemView.findViewById(R.id.tvDates)
+        private val tvReason: TextView = itemView.findViewById(R.id.tv_extension_item_description)
+        private val tvStatus: TextView = itemView.findViewById(R.id.tv_extension_item_status)
+        private val tvDate: TextView = itemView.findViewById(R.id.tv_extension_item_to_date)
 
-        fun bind(application: Application) {
-            tvReason.text = application.description
-            tvStatus.text = application.status
-            tvDates.text = "${application.fromDate} - ${application.toDate}"
+        fun bind(extension: Extension) {
+            tvReason.text = extension.description
+            tvStatus.text = extension.status
+            tvDate.text = "${extension.extensionToDate}"
 
             itemView.setOnClickListener {
-                onItemClick(application)
+                onItemClick(itemView)
             }
-            Log.d("Bind", "binding happened with application reason ${application.description}")
+            Log.d("Bind", "binding happened with application reason ${extension.description}")
         }
     }
 
@@ -38,15 +39,14 @@ class ExtensionListAdapter(data: List<Application>, val onItemClick: (Applicatio
     }
 
     override fun onBindViewHolder(holder: ExtensionListViewHolder, position: Int) {
-        if (position > 0 && position < applicationList.size)
-            holder.bind(applicationList[position])
+        holder.bind(extensionList[position])
     }
 
-    override fun getItemCount(): Int = applicationList.size
+    override fun getItemCount(): Int = extensionList.size
 
-    fun updateData(data: List<Application>) {
+    fun updateData(data: List<Extension>) {
         //Log.d("update data", data.toString())
-        applicationList = data
+        extensionList = data
         notifyDataSetChanged()
     }
 }

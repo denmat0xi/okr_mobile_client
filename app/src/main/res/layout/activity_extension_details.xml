@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/extension_details_description_field_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_extension_details_description_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="description" />
+
+        <TextView
+            android:id="@+id/tv_extension_details_description_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tv_extension_details_to_date_field_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_extension_details_to_date_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="to_date" />
+
+        <TextView
+            android:id="@+id/tv_extension_details_to_date_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tv_extension_details_status_field_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_extension_details_status_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="status" />
+
+        <TextView
+            android:id="@+id/tv_extension_details_status_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_extension_details_image_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image_application"
+        android:background="@android:color/darker_gray"
+        android:layout_gravity="center" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+    <LinearLayout
+        android:id="@+id/extension_details_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btn_extension_details_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Extend" />
+
+    </LinearLayout>
+
+</LinearLayout>
