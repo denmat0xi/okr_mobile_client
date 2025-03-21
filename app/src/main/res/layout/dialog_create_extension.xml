@@ -9,20 +9,20 @@
         android:id="@+id/et_create_extension_date_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Продление до (YYYY-MM-DD)"
+        android:hint="@string/yyyy_mm_dd_to"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/et_create_extension_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Описание"
+        android:hint="@string/ru_desc"
         android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/btn_create_extension_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выбрать изображение" />
+        android:text="@string/ru_pick_image_dial" />
 
 </LinearLayout>

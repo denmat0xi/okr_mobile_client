@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/et_register_surname"
-        android:hint="surname"
+        android:hint="@string/ru_surname"
         android:inputType="text"
         android:minHeight="48dp"
         android:layout_width="409dp"
@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/et_register_name"
-        android:hint="name"
+        android:hint="@string/ru_name"
         android:inputType="text"
         android:minHeight="48dp"
         android:layout_width="409dp"
@@ -31,7 +31,7 @@
 
     <EditText
         android:id="@+id/et_register_patronymic"
-        android:hint="patronymic"
+        android:hint="@string/ru_patronymic"
         android:inputType="text"
         android:minHeight="48dp"
         android:layout_width="409dp"
@@ -42,8 +42,8 @@
 
     <EditText
         android:id="@+id/et_register_email"
-        android:hint="email"
-        android:inputType="text"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
 
     <EditText
         android:id="@+id/et_register_password"
-        android:hint="password"
+        android:hint="@string/ru_password_reg"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:layout_width="409dp"
@@ -64,7 +64,7 @@
 
     <EditText
         android:id="@+id/et_register_confirm_password"
-        android:hint="confirm password"
+        android:hint="@string/ru_confirm_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:layout_width="409dp"
@@ -99,14 +99,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="@string/ru_cancel" />
 
         <Button
             android:id="@+id/btn_register_ok"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Ok" />
+            android:text="@string/ru_ok" />
     </LinearLayout>
 
 

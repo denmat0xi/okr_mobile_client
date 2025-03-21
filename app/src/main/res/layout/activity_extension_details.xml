@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="description" />
+            android:text="@string/ru_description" />
 
         <TextView
             android:id="@+id/tv_extension_details_description_value"
@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="to_date" />
+            android:text="@string/ru_to_date" />
 
         <TextView
             android:id="@+id/tv_extension_details_to_date_value"
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="status" />
+            android:text="@string/ru_status" />
 
         <TextView
             android:id="@+id/tv_extension_details_status_value"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Extend" />
+            android:text="@string/ru_back" />
 
     </LinearLayout>
 

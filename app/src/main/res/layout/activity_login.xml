@@ -11,7 +11,7 @@
         android:minHeight="48dp"
         android:layout_height="wrap_content"
         android:autofillHints="48dp"
-        android:hint="@string/login_page_login"
+        android:hint="@string/ru_login"
         android:inputType="text" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:minHeight="48dp"
         android:layout_height="wrap_content"
         android:autofillHints="48dp"
-        android:hint="@string/login_page_password"
+        android:hint="@string/ru_password"
         android:inputType="textPassword" />
 
     <Button

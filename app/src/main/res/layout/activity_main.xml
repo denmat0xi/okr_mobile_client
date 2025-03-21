@@ -8,39 +8,33 @@
         android:id="@+id/btn_to_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To login"
+        android:text="@string/to_login"
         android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btn_to_pass_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To showing pass list"
+        android:text="@string/ru_pass_list"
         android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btn_to_create_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="To create pass" />
-
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="test" />
+        android:text="@string/ru_to_create_pass" />
 
 
     <Button
         android:id="@+id/btn_main_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="@string/ru_register" />
 
     <Button
         android:id="@+id/btn_main_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout" />
+        android:text="@string/ru_logout" />
 
 </LinearLayout>
