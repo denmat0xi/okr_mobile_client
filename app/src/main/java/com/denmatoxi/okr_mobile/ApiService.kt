@@ -14,6 +14,7 @@ import com.denmatoxi.okr_mobile.dataClasses.EditApplicationRequest
 import com.denmatoxi.okr_mobile.dataClasses.EditApplicationResponse
 import com.denmatoxi.okr_mobile.dataClasses.EditProfileRequest
 import com.denmatoxi.okr_mobile.dataClasses.EditProfileResponse
+import com.denmatoxi.okr_mobile.dataClasses.GetApplicationResponse
 import com.denmatoxi.okr_mobile.dataClasses.GetUserProfileResponse
 import com.denmatoxi.okr_mobile.dataClasses.GetUserStatusesResponse
 import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
@@ -53,6 +54,9 @@ interface ApiService {
 
     @PUT("/application/{id}")
     fun editApplication(@Path("id") applicationId : String, @Body newApplication: EditApplicationRequest) : Call<EditApplicationResponse>
+
+    @GET("/application/{id}")
+    fun getApplication(@Path("id") applicationId : String) : Call<GetApplicationResponse>
 
     @DELETE("/application/{id}")
     fun deleteApplication(@Path("id") applicationId: String) : Call<Unit>

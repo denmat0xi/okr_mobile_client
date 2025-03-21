@@ -5,9 +5,9 @@ import java.util.UUID
 
 data class CreateApplicationResponse (
     @SerializedName("id")
-    val id: UUID,
+    val id: String,
     @SerializedName("userId")
-    val userId: UUID,
+    val userId: String,
     @SerializedName("description")
     val reason: String,
     @SerializedName("fromDate")

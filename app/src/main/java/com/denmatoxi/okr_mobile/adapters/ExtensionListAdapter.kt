@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.dataClasses.Application
 
-class ApplicationListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
-    RecyclerView.Adapter<ApplicationListAdapter.ApplicationListViewHolder>() {
+class ExtensionListAdapter(data: List<Application>, val onItemClick: (Application) -> Unit) :
+    RecyclerView.Adapter<ExtensionListAdapter.ExtensionListViewHolder>() {
 
     private var applicationList: List<Application> = data
 
-    inner class ApplicationListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ExtensionListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvReason: TextView = itemView.findViewById(R.id.tvReason)
         private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
         private val tvDates: TextView = itemView.findViewById(R.id.tvDates)
@@ -31,13 +31,13 @@ class ApplicationListAdapter(data: List<Application>, val onItemClick: (Applicat
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExtensionListViewHolder {
         val view = LayoutInflater.from(parent.context).
-                inflate(R.layout.item_application, parent, false)
-        return ApplicationListViewHolder(view)
+                inflate(R.layout.item_extension, parent, false)
+        return ExtensionListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ApplicationListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ExtensionListViewHolder, position: Int) {
         if (position > 0 && position < applicationList.size)
             holder.bind(applicationList[position])
     }

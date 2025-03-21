@@ -12,9 +12,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.denmatoxi.okr_mobile.dataClasses.Application
+import com.denmatoxi.okr_mobile.dataClasses.CreateApplicationRequest
+import com.denmatoxi.okr_mobile.enums.Status
 import java.io.ByteArrayOutputStream
+import java.util.UUID
 
-class CreateApplicationDialog(context: Context, private val onSubmit: (fromDate: String, toDate: String, description: String, imageBase64: String) -> Unit) {
+class CreateApplicationDialog(context: Context, private val onSubmit: (CreateApplicationRequest) -> Unit) {
     private val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_create_application, null)
     private val fromDateInput: EditText = dialogView.findViewById(R.id.etFromDate)
     private val toDateInput: EditText = dialogView.findViewById(R.id.etToDate)
@@ -34,11 +38,11 @@ class CreateApplicationDialog(context: Context, private val onSubmit: (fromDate:
             .setView(dialogView)
             .setPositiveButton("OK") { _, _ ->
                 if (validateInputs()) {
-                    onSubmit(
-                        fromDateInput.text.toString(),
-                        toDateInput.text.toString(),
-                        descriptionInput.text.toString(),
-                        imageBase64
+                    onSubmit(CreateApplicationRequest(
+                        fromDate = fromDateInput.text.toString(),
+                        toDate = toDateInput.text.toString(),
+                        description = descriptionInput.text.toString(),
+                        image = imageBase64)
                     )
                 }
             }

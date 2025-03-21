@@ -1,79 +1,77 @@
 package com.denmatoxi.okr_mobile.activities
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.denmatoxi.okr_mobile.R
+import com.denmatoxi.okr_mobile.RetrofitClient
+import com.denmatoxi.okr_mobile.SessionManager
+import com.denmatoxi.okr_mobile.dataClasses.GetApplicationResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ApplicationDetailsActivity : BaseActivity() {
 
-    private lateinit var idValueView: TextView
-    private lateinit var userIdValueView: TextView
-    private lateinit var descriptionValueView: TextView
-    private lateinit var fromDateValueView: TextView
-    private lateinit var toDateValueView: TextView
-    private lateinit var statusValueView: TextView
+    private lateinit var btnAddExtension: Button
+    private lateinit var imageView: ImageView
+
+
+    private val ctx = this
+
+    private fun base64ToBitmap(string: String) : Bitmap {
+        return try {
+            val decodedString = Base64.decode(string, Base64.DEFAULT)
+
+            BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        } catch (e: IllegalArgumentException) {
+            Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_application_details)
+        btnAddExtension = findViewById(R.id.btn_edit_pass)
+        imageView = findViewById(R.id.image_application)
 
-        findViewById<TextView>(R.id.id_value).text = intent.getStringExtra("passId")
-        findViewById<TextView>(R.id.description_value).text = intent.getStringExtra("passDescription")
-        findViewById<TextView>(R.id.user_id_value).text = intent.getStringExtra("passUserId")
-        findViewById<TextView>(R.id.from_date_value).text = intent.getStringExtra("passFromDate")
-        findViewById<TextView>(R.id.to_date_value).text = intent.getStringExtra("passToDate")
-        findViewById<TextView>(R.id.status_value).text = intent.getStringExtra("passStatus")
 
-        Log.d("PassDetailsActivity", findViewById<TextView>(R.id.status_value).text.toString())
-        /*
-        idValueView = findViewById(R.id.id_value)
-        userIdValueView = findViewById(R.id.user_id_value)
-        descriptionValueView = findViewById(R.id.description_value)
-        fromDateValueView = findViewById(R.id.from_date_value)
-        toDateValueView = findViewById(R.id.to_date_value)
-        findViewById<TextView>(R.id.status_value).text =
-
-        val passId = intent.getStringExtra("passId")
-        val passUserId = intent.getStringExtra("passUserId")
-        val passDescription = intent.getStringExtra("passDescription")
-        val passFromDate = intent.getStringExtra("passFromDate")
-        val passToDate = intent.getStringExtra("passToDate")
-        val passStatus = intent.getStringExtra("passStatus")
-        */
-
-    }
-    /*
-    private fun loadPassDetails(passId: Int) {
-        RetrofitClient.instance.getPass(passId).enqueue(object : Callback<Pass> {
-            @SuppressLint("SetTextI18n")
-            override fun onResponse(call: Call<Pass>, response: Response<Pass>) {
+        val call = RetrofitClient.instance(this).getApplication(intent.getStringExtra("applicationId")!!)
+        call.enqueue(object : Callback<GetApplicationResponse> {
+            override fun onResponse(call: Call<GetApplicationResponse>, response: Response<GetApplicationResponse>) {
                 if (response.isSuccessful) {
-                    val pass = response.body()
-                    pass?.let {
-                        tvReason.text = "Причина пропуска: ${it.reason}"
-                        tvStatus.text = "Статус: ${it.status}"
-                        tvDates.text = "Дата начала: ${it.startDate}\nДата окончания: ${it.endDate}"
-
-                        if (!it.fileUrl.isNullOrEmpty()) {
-                            btnDownloadFile.visibility = View.VISIBLE
-                            btnDownloadFile.setOnClickListener {
-                                downloadFile(it.fileUrl!!)
-                            }
-                        } else {
-                            btnDownloadFile.visibility = View.GONE
-                        }
-                    }
+                    findViewById<TextView>(R.id.id_value).text = response.body()?.id
+                    findViewById<TextView>(R.id.description_value).text  = response.body()?.description
+                    findViewById<TextView>(R.id.user_id_value).text = response.body()?.userId
+                    findViewById<TextView>(R.id.from_date_value).text = response.body()?.fromDate
+                    findViewById<TextView>(R.id.to_date_value).text = response.body()?.toDate
+                    findViewById<TextView>(R.id.status_value).text = response.body()?.status
+                    findViewById<ImageView>(R.id.image_application).setImageBitmap(base64ToBitmap(response.body()?.image!!))
+                }
+                else {
+                    Log.d("ApplicationActivity","Failure")
                 }
             }
 
-            override fun onFailure(call: Call<Pass>, t: Throwable) {
-                Toast.makeText(this@PassDetailsActivity, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<GetApplicationResponse>, t: Throwable) {
+                SessionManager(ctx).clearToken()
+                Log.d("Logout", "Failed (onFailure invoked)")
             }
         })
+
+
+        btnAddExtension.setOnClickListener {
+            
+        }
+
+        Log.d("PassDetailsActivity", findViewById<TextView>(R.id.status_value).text.toString())
     }
-    */
-
-
+    
+    
 }

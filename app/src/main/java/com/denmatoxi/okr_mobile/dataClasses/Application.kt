@@ -5,15 +5,15 @@ import java.util.UUID
 
 data class Application(
     @SerializedName("id")
-    val id: UUID,
+    val id: String,
     @SerializedName("userId")
-    val userId: UUID,
+    val userId: String,
     @SerializedName("description")
-    val reason: String,
+    val description: String,
     @SerializedName("fromDate")
-    val startDate: String,
+    val fromDate: String,
     @SerializedName("toDate")
-    val endDate: String,
+    val toDate: String,
     @SerializedName("status")
     val status: String,
     @SerializedName("comment")

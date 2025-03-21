@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.util.UUID
 
 data class CreateApplicationExtensionResponse(
-    @SerializedName("id") val id: UUID,
-    @SerializedName("applicationId") val applicationId: UUID,
+    @SerializedName("id") val id: String,
+    @SerializedName("applicationId") val applicationId: String,
     @SerializedName("extensionToDate") val extensionToDate: String,
     @SerializedName("description") val description: String,
     @SerializedName("image") val image: String,

@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.util.UUID
 
 data class EditApplicationResponse(
-    @SerializedName("id") val id: UUID,
-    @SerializedName("userId") val userId: UUID,
+    @SerializedName("id") val id: String,
+    @SerializedName("userId") val userId: String,
     @SerializedName("fromDate") val fromDate: String,
     @SerializedName("toDate") val toDate: String,
     @SerializedName("description") val description: String,

@@ -30,8 +30,6 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
 
             if (username.isNotEmpty() && password.isNotEmpty()) {
-                //TODO("Ввести проверку по токену (да и вообще связать приложение с бэком)")
-
                 authViewModel.login(this, username, password) { success, token ->
                     if (success) {
                         val sessionManager = SessionManager(this)

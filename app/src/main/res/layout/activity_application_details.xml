@@ -125,6 +125,14 @@
             android:text="" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/image_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image_application"
+        android:background="@android:color/darker_gray"
+        android:layout_gravity="center" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -143,14 +151,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Edit" />
+            android:text="Extend" />
 
-        <Button
-            android:id="@+id/btn_delete_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Delete" />
     </LinearLayout>
 
 </LinearLayout>

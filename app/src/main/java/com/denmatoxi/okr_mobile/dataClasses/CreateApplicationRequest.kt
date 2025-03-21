@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 
 data class CreateApplicationRequest(
     @SerializedName("fromDate")
-    val fromDate: String,
+    var fromDate: String,
     @SerializedName("toDate")
-    val toDate: String,
+    var toDate: String,
     @SerializedName("description")
     val description: String,
     @SerializedName("image")

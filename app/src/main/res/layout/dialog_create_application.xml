@@ -9,14 +9,14 @@
         android:id="@+id/etFromDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Дата начала"
+        android:hint="Дата начала (YYYY-MM-DD)"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/etToDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Дата окончания"
+        android:hint="Дата окончания (YYYY-MM-DD)"
         android:inputType="text" />
 
     <EditText

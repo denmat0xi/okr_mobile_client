@@ -5,9 +5,9 @@ import java.util.UUID
 
 data class Extension (
     @SerializedName("id")
-    val id: UUID,
+    val id: String,
     @SerializedName("applicationId")
-    val applicationId: UUID,
+    val applicationId: String,
     @SerializedName("extensionToDate")
     val extensionToDate: String,
     @SerializedName("description")

@@ -1,19 +1,18 @@
 package com.denmatoxi.okr_mobile.dataClasses
 
 import com.google.gson.annotations.SerializedName
-import java.util.UUID
 
-data class ChangeApplicationExtensionStatusResponse (
+data class GetApplicationResponse (
     @SerializedName("id")
     val id: String,
     @SerializedName("userId")
     val userId: String,
     @SerializedName("description")
-    val reason: String,
+    val description: String,
     @SerializedName("fromDate")
-    val startDate: String,
+    val fromDate: String,
     @SerializedName("toDate")
-    val endDate: String,
+    val toDate: String,
     @SerializedName("status")
     val status: String,
     @SerializedName("comment")

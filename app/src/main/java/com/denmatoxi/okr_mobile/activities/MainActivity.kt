@@ -8,12 +8,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.denmatoxi.okr_mobile.ApiService
+import com.denmatoxi.okr_mobile.CreateApplicationDialog
 import com.denmatoxi.okr_mobile.R
 import com.denmatoxi.okr_mobile.RetrofitClient
 import com.denmatoxi.okr_mobile.SessionManager
 import com.denmatoxi.okr_mobile.adapters.ApplicationListAdapter
 import com.denmatoxi.okr_mobile.dataClasses.Application
 import com.denmatoxi.okr_mobile.dataClasses.AuthResponse
+import com.denmatoxi.okr_mobile.dataClasses.CreateApplicationRequest
 import com.denmatoxi.okr_mobile.dataClasses.LoginRequest
 import com.denmatoxi.okr_mobile.viewModels.ApplicationListViewModel
 import retrofit2.Call
@@ -25,6 +27,8 @@ class MainActivity : BaseActivity() {
 //
     private lateinit var applicationRecyclerView: RecyclerView
     private lateinit var applicationAdapter: ApplicationListAdapter
+
+    private lateinit var createApplicationDialog: CreateApplicationDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,10 +77,7 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this, ApplicationListActivity::class.java)
             startActivity(intent)
         }
-        createPassButton.setOnClickListener {
-            val intent = Intent(this, CreateApplicationActivity::class.java)
-            startActivity(intent)
-        }
+
         logoutButton.setOnClickListener {
             val call = RetrofitClient.instance(this).logout()
             call.enqueue(object : Callback<Unit> {
@@ -97,18 +98,5 @@ class MainActivity : BaseActivity() {
                 }
             })
         }
-    }
-
-    override fun onStart()
-    {
-        super.onStart()
-        Log.d("onStart MainActivity", "current token ${SessionManager(this).fetchToken()}")
-
-        if (SessionManager(this).fetchToken().isNullOrEmpty()) {
-            Log.d("onStart MainActivity", "current token ${SessionManager(this).fetchToken()}")
-            val intent = Intent(this, AccessActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 }
